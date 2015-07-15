@@ -13,7 +13,7 @@ begin
   puts divide(1.0,2.0)
   puts divide(2.0, 0)     # Throws a ArgumentError
   puts divide("one", 9)   # Throws a TypeError
-rescue => ex
+rescue TypeError, ArgumentError => ex
   puts "The exception #{ex.class} was thrown. #{ex.message}"
 end
 

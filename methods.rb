@@ -24,7 +24,7 @@ puts m[x]; puts
 
 # Return multiple values
 def polar(x,y)
-  return Math.hypot(x,y), Math.atan2(y,x) * 57.2957795
+  return Math.hypot(x,y), Math.atan2(y,x) * (180/Math::PI)
 end
 
 _x,_y = Math.sqrt(2)/2, Math.sqrt(2)/2
@@ -37,4 +37,34 @@ o = "message"
 def o.printme   # Define an object for a specififed object.
   puts self
 end
-o.printme
+o.printme; puts
+
+# Parentheses matter
+puts Math.sqrt(2+2)*2 
+puts Math.sqrt (2+2)*2
+puts
+
+# Parameter defaults
+def prefix(s, len=1)
+  s[0,len]
+end
+puts prefix "Andrew"
+puts prefix("Andrew", 3)
+puts
+
+# Arbitrary number of parameters
+def max(first, *rest)
+  max = first
+  rest.each { |x| max = x if x > max }
+  max
+end
+# Amount of arguments past the first are appended to an array.
+puts max 1
+puts max(1,2)
+puts max(1,2,3,4)
+puts
+
+data = [1,2,3]
+puts max(*data)    # Split the array into separate arguments
+print max(data)    # Find the max array?
+puts

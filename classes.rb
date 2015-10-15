@@ -2,7 +2,7 @@ include Comparable
 # Class and Object basics.
 class Point
   # Define accessor methods for instance variables using the Module class methods attr_accessor, attr_reader, attr_writer
-  attr_reader :x, :y    # or attr_reader "x", "y" 
+  attr_accessor :x, :y    # or attr_accessor "x", "y" 
   # Instance variables always begin with '@'
   @@total_points = 0
   
@@ -109,10 +109,21 @@ class Point
     Point.new(x,y)
   end
   
-  private
   
-  def useless; "Don't print" ; end
+end
+
+class Point3d < Point
+  
+  def initialize(x,y,z)
+    super(x,y)
+    @z = z
+  end
     
+  ORIGIN = Point3d.new(0,0,0)
+  
+  def to_s
+    "(#@x,#@y,#@z)"
+  end
 end
 
 p = Point.new(1,2)
@@ -126,4 +137,12 @@ p.each { |x| print x }; puts
 puts Point::UNIT_X + Point::UNIT_Y
 puts p + Point::UNIT_X
 puts Point.total_points
-puts p.useless
+p2 = Point3d.new(7,8,9)
+puts p2
+puts (p2.is_a? Point) && (p2.is_a? Point3d)
+puts p2.instance_of? Point
+puts p2.instance_of? Point3d
+puts p2
+puts Point3d.total_points
+print ["Point ",Point::ORIGIN.to_s ,". Point3d ",Point3d::ORIGIN.to_s]
+puts "end"

@@ -22,3 +22,8 @@ number = case x              # x is only evaluated once and compared to each con
       end
       
 puts number
+
+hash = {"success"=>true, "data"=>{"la"=>"0.00", "memory"=>{"total"=>3.9, "free"=>3.3}, "cpu"=>{"user"=>0, "nice"=>0, "sys"=>1.9, "idle"=>98.1}}}
+puts "#{hash["data"]["memory"]["total"]}"
+storage = {"success"=>true, "data"=>{"/"=>{"device"=>"/dev/vda1", "mpoint"=>"/", "fstype"=>"ext4", "options"=>"rw,relatime,data=ordered", "dump"=>"0", "fsck_order"=>"0", "total"=>20608636, "free"=>6629208}}}
+puts "#{storage["data"]["/"]["total"]}"
